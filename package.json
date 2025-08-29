@@ -1,0 +1,28 @@
+{
+  "name": "vibescript-library",
+  "version": "1.0.0",
+  "description": "An LLM based Typescript/Javascript library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "vibecoding",
+    "vibe",
+    "llm",
+    "ai"
+  ],
+  "author": "Patrick Demian",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^30.1.1",
+    "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@google/genai": "^1.16.0"
+  }
+}
