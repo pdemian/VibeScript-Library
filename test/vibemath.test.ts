@@ -11,5 +11,7 @@ describe('VibeMath Integration Test', async () => {
 
         expect(VibeHelper.vibeCheck(`Is ${await VibeMath.E} the value of the mathematical constant e?`)).toBe(true);
         expect(VibeHelper.vibeCheck(`Is ${await VibeMath.PI} the value of the mathematical constant pi?`)).toBe(true);
+        expect(VibeHelper.vibeCheck(`Is ${await VibeMath.abs(-42)} the absolute value of -42?`)).toBe(true);
+        expect(VibeHelper.vibeCheck(`Is ${await VibeMath.sqrt(16)} the square root of 16?`)).toBe(true);
     });
 });

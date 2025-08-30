@@ -103,6 +103,7 @@ export class VibeHelper {
         return response.text.substring(1, response.text.length-1).split(",");
     }
 
+    // just for the aura
     public static async vibeCheck(prompt: string): Promise<boolean> {
         return VibeHelper.generateBoolean(prompt);
     }

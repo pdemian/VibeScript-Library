@@ -123,59 +123,73 @@ export class VibeDate {
     }
 
     public async setFullYear(year: number, month?: number, date?: number): Promise<number> {
-        return this.date.setFullYear(year, month, date);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the year to ${year}${month !== undefined ? `, month to ${month+1}` : ""}${date !== undefined ? `, date to ${date}` : ""} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setHours(hours: number, min?: number, sec?: number, ms?: number): Promise<number> {
-        return this.date.setHours(hours, min, sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the hours to ${hours}${min !== undefined ? `, minutes to ${min}` : ""}${sec !== undefined ? `, seconds to ${sec}` : ""}${ms !== undefined ? `, milliseconds to ${ms}` : ""} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setMilliseconds(ms: number): Promise<number> {
-        return this.date.setMilliseconds(ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the milliseconds to ${ms} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setMinutes(min: number, sec?: number, ms?: number): Promise<number> {
-        return this.date.setMinutes(min, sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the minutes to ${min}${sec !== undefined ? `, seconds to ${sec}` : ""}${ms !== undefined ? `, milliseconds to ${ms}` : ""} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setMonth(month: number, date?: number): Promise<number> {
-        return this.date.setMonth(month, date);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the month to ${month+1}${date !== undefined ? `, date to ${date}` : ""} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setSeconds(sec: number, ms?: number): Promise<number> {
-        return this.date.setSeconds(sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the seconds to ${sec}${ms !== undefined ? `, milliseconds to ${ms}` : ""} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setTime(time: number): Promise<number> {
-        return this.date.setTime(time);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the time to the timestamp ${time} for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCDate(date: number): Promise<number> {
-        return this.date.setUTCDate(date);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the day of the month to ${date} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCFullYear(year: number, month?: number, date?: number): Promise<number> {
-        return this.date.setUTCFullYear(year, month, date);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the year to ${year}${month !== undefined ? `, month to ${month+1}` : ""}${date !== undefined ? `, date to ${date}` : ""} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCHours(hours: number, min?: number, sec?: number, ms?: number): Promise<number> {
-        return this.date.setUTCHours(hours, min, sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the hours to ${hours}${min !== undefined ? `, minutes to ${min}` : ""}${sec !== undefined ? `, seconds to ${sec}` : ""}${ms !== undefined ? `, milliseconds to ${ms}` : ""} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCMilliseconds(ms: number): Promise<number> {
-        return this.date.setUTCMilliseconds(ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the milliseconds to ${ms} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCMinutes(min: number, sec?: number, ms?: number): Promise<number> {
-        return this.date.setUTCMinutes(min, sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the minutes to ${min}${sec !== undefined ? `, seconds to ${sec}` : ""}${ms !== undefined ? `, milliseconds to ${ms}` : ""} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCMonth(month: number, date?: number): Promise<number> {
-        return this.date.setUTCMonth(month, date);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the month to ${month+1}${date !== undefined ? `, date to ${date}` : ""} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async setUTCSeconds(sec: number, ms?: number): Promise<number> {
-        return this.date.setUTCSeconds(sec, ms);
+        this.date = VibeHelper.generateText(`What is the new date in ISO 8601 format after setting the seconds to ${sec}${ms !== undefined ? `, milliseconds to ${ms}` : ""} in UTC for the date "${await this.date}"?`);
+        return this.valueOf();
     }
 
     public async toDateString(): Promise<string> {
@@ -190,16 +204,16 @@ export class VibeDate {
         return VibeHelper.generateText(`What is the JSON string representation of the date "${await this.date}"${key ? " with the given key: " + key : ""}?`);
     }
 
-    public async toLocaleDateString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string {
-        return this.date.toLocaleDateString(locales, options);
+    public async toLocaleDateString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): Promise<string> {
+        return VibeHelper.generateText(`What is the locale date string representation of the date "${await this.date}"${options ? " given the following options in JSON format: " + JSON.stringify(options) : ""}?`);
     }
 
-    public async toLocaleString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string {
-        return this.date.toLocaleString(locales, options);
+    public async toLocaleString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): Promise<string> {
+        return VibeHelper.generateText(`What is the locale string representation of the date "${await this.date}"${options ? " given the following options in JSON format: " + JSON.stringify(options) : ""}?`);
     }
 
-    public async toLocaleTimeString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string {
-        return this.date.toLocaleTimeString(locales, options);
+    public async toLocaleTimeString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): Promise<string> {
+        return VibeHelper.generateText(`What is the locale time string representation of the date "${await this.date}"${options ? " given the following options in JSON format: " + JSON.stringify(options) : ""}?`);
     }
 
     public async toString(): Promise<string> {
