@@ -8,6 +8,7 @@ export class VibeString {
     }
 
     // Static methods
+    
     public static fromCharCode(...codes: number[]): Promise<string> {
         return VibeHelper.generateText(`What is the string formed by the characters corresponding to the Unicode values [${codes.join(", ")}]?`);
     }
@@ -58,14 +59,9 @@ export class VibeString {
         return VibeHelper.generateNumber(`What is the result of comparing the string "${this.value}" with the string "${compareString}"${locales !== undefined ? ` using the locale(s) ${typeof locales === 'string' ? `"${locales}"` : `[${locales.map(l => `"${l}"`).join(", ")}]`}` : ""}${options !== undefined ? ` and the options ${JSON.stringify(options)}` : ""}? Return -1 if "${this.value}" comes before "${compareString}", 1 if it comes after, and 0 if they are equivalent.`);
     }
 
-
-    /* public async match(regexp: RegExp | string): RegExpMatchArray | null {
-        return VibeHelper.generateText(`What is the result of matching the string "${this.value}" against the regular expression "${regexp.toString()}"? Return an array of matches or null if no match is found.`) as unknown as RegExpMatchArray | null;
+    public async match(regexp: RegExp | string): Promise<string[] | null> {
+        return VibeHelper.generateTextArray(`What is the result of matching the string "${this.value}" against the regular expression "${regexp.toString()}"? Return an array of matches or null if no match is found.`);
     }
-
-    public async matchAll(regexp: RegExp): IterableIterator<RegExpMatchArray> {
-        return this.value.matchAll(regexp);
-    } */
 
     public async normalize(form?: 'NFC' | 'NFD' | 'NFKC' | 'NFKD'): Promise<string> {
         return VibeHelper.generateText(`What is the normalized form (${form ?? "NFC"}) of the string "${this.value}"?`);
@@ -99,11 +95,10 @@ export class VibeString {
         return VibeHelper.generateText(`What is the substring of the string "${this.value}" from index ${start ?? 0} to ${end !== undefined ? end : "the end"}?`);
     }
 
-    /*
-    public async split(separator: string | RegExp, limit?: number): string[] {
-        return VibeHelper.generateText(`What is the result of splitting the string "${this.value}" using the separator "${separator.toString()}"${limit !== undefined ? ` with a limit of ${limit}` : ""}? Return an array of substrings.`) as unknown as string[];
+    public async split(separator: string | RegExp, limit?: number): Promise<string[]> {
+        const result = await VibeHelper.generateTextArray(`What is the result of splitting the string "${this.value}" using the separator "${separator.toString()}"${limit !== undefined ? ` with a limit of ${limit}` : ""}? Return an array of substrings.`);
+        return result!;
     }
-    */
 
     public async startsWith(searchString: string, position?: number): Promise<boolean> {
         return VibeHelper.generateBoolean(`Does the string "${this.value}" start with the substring "${searchString}"${position !== undefined ? ` at position ${position}` : ""}?`);

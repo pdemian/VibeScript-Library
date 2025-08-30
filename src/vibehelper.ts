@@ -77,5 +77,33 @@ export class VibeHelper {
         return response.text;
     }
 
-    /** TODO: string arrays for regex */
+    public static async generateTextArray(prompt: string): Promise<string[] | null> {
+        const genAI = VibeHelper.getInstance();
+        const response = await genAI.models.generateContent({
+            model: GEMINI_MODEL,
+            contents: prompt,
+            config: {
+                systemInstruction: "You are an expert at Javascript. Answer the question and return only the result in array format (eg, [1,2,3]). Do not include any explanations or additional text. Do not include code blocks.",
+                ...VibeHelper.config,
+            }
+        });
+
+        if(response.text === undefined) {
+            throw new Error("No response from Gemini API");
+        }
+
+        if(response.text[0] !== '[' || response.text[response.text.length - 1] !== ']') {
+            throw new Error("Response is not in array format");
+        }
+
+        if(response.text === "null") {
+            return [];
+        }
+
+        return response.text.substring(1, response.text.length-1).split(",");
+    }
+
+    public static async vibeCheck(prompt: string): Promise<boolean> {
+        return VibeHelper.generateBoolean(prompt);
+    }
 }
