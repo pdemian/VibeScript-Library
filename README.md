@@ -1,4 +1,6 @@
 # VibeScript-Library
+![npm release](https://img.shields.io/npm/v/vibescript-library)
+
 An LLM based Typescript/Javascript library
 
 Drop in replacement for most used library functions using Gemini AI.
