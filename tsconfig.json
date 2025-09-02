@@ -40,5 +40,5 @@
     "skipLibCheck": true,
   },
   // ignore test files
-  "exclude": ["**/*.test.ts", "**/*.setup.ts"],
+  "exclude": ["**/*.test.ts", "**/*.setup.ts", "**/dist/**/*"],
 }
