@@ -30,7 +30,7 @@ console.log(concat); // "The model is overloaded. Please try again later."
 
 ## Leave your colleagues in the dust with AI's impressive speed
 
-![Benchmark results](benchmark.png)
+![Benchmark results](benchmark.PNG)
 
 ## Tested for the best vibes
 
