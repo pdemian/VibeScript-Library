@@ -1,0 +1,5 @@
+benchmark.PNG
+tsconfig.json
+test/**/*
+.env
+.gitattributes
