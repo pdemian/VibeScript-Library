@@ -1,4 +1,4 @@
-import { VibeHelper } from "./vibehelper";
+import { VibeHelper } from "./vibehelper.js";
 
 export class VibeDate {
     private date: Promise<string>;

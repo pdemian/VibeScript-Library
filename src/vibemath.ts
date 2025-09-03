@@ -1,4 +1,4 @@
-import { VibeHelper } from "./vibehelper";
+import { VibeHelper } from "./vibehelper.js";
 
 export class VibeMath {
     public static E: Promise<number>;

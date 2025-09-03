@@ -12,7 +12,7 @@ describe('VibeDate Integration Test', async () => {
         const date = new VibeDate('2023-10-01T12:00:00Z');
         const year = await date.getFullYear();
         expect(VibeHelper.vibeCheck(`Is the year of the date "${await date.toString()}" equal to ${year}?`)).toBe(true);
-        const month = await date.getMonth();
+        const month = await date.getMonth() + 1;
         expect(VibeHelper.vibeCheck(`Is the month of the date "${await date.toString()}" equal to ${month}?`)).toBe(true);
         const day = await date.getDate();
         expect(VibeHelper.vibeCheck(`Is the day of the date "${await date.toString()}" equal to ${day}?`)).toBe(true);

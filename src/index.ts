@@ -1,3 +1,3 @@
-export { VibeString } from "./vibestring";
-export { VibeMath } from "./vibemath";
-export { VibeDate } from "./vibedate";
+export { VibeString } from "./vibestring.js";
+export { VibeMath } from "./vibemath.js";
+export { VibeDate } from "./vibedate.js";

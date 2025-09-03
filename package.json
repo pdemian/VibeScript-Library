@@ -1,9 +1,10 @@
 {
   "name": "vibescript-library",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An LLM based Typescript/Javascript library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "test": "ts-jest"
